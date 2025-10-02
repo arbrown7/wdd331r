@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+// Variables (from :root)
+$body: #333;
+$light-gray: #d0d0d0;
+$link-normal: #666;
+$link-visited: #666;
+$link-active: #DEB887;
+$link-hover: #00ddff;
+$break-medium: 768px;
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == medium {
+      @media only screen and (min-width: $break-medium) {
+        @content;
+      }
+    }
+}
+  
+// Base styles
+body {
+  font-family: 'Arial', sans-serif;
+  color: $body;
+}
+
+header {
+  display: grid;
+  text-align: center;
+
+  h1 {
+    font-size: 50px;
+    font-weight: 450;
+
+    a {
+      color: $body;
+
+      &:hover,
+      &:visited {
+        color: $body;
+      }
+    }
+  }
+}
+
+nav {
+  border-top: 1px solid $light-gray;
+  border-bottom: 1px solid $light-gray;
+  line-height: 2;
+
+  ul {
+    list-style-type: none;
+    text-transform: uppercase;
+  }
+}
+
+h2 {
+  font-family: 'Lora', serif;
+  font-weight: normal;
+}
+
+article {
+  > h2 {
+    border-bottom: 1px solid $light-gray;
+    text-align: right;
+    text-transform: uppercase;
+  }
+}
+
+a {
+  font-family: 'Lora', serif;
+  color: $link-normal;
+  text-decoration: none;
+
+  &:visited {
+    color: $link-visited;
+  }
+  &:hover {
+    color: $link-hover;
+  }
+  &:active {
+    color: $link-active;
+  }
+}
+
+p {
+  a {
+    font-family: 'Arial', sans-serif;
+  }
+}
+
+img {
+  max-width: 175px;
+}
+
+@include respond-to(medium) {
+    header {
+      display: block;
+    }
+  
+    nav {
+      ul {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1em;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  
+    article {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+  
+      > h2 {
+        border-bottom: none;
+        text-align: right;
+        padding: 1em;
+        width: 20%;
+        font-size: 1.5em;
+        box-sizing: border-box;
+      }
+    }
+  
+    section {
+      padding: 1em;
+      width: 80%;
+      border-bottom: 1px solid $light-gray;
+      border-left: 1px solid $light-gray;
+    }
+}
